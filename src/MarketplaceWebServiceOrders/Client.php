@@ -659,6 +659,10 @@ class MarketplaceWebServiceOrders_Client implements MarketplaceWebServiceOrders_
             throw new MarketplaceWebServiceOrders_Exception($exProps);
         }
 
+        // Hack :(
+        // This line breaks the code and it doesn't matter
+        $response = preg_replace('/<GiftMessageText>.*<\\/GiftMessageText>/s', '', $response);
+
         curl_close($ch);
         return $this->_extractHeadersAndBody($response);
     }
