@@ -660,6 +660,8 @@ class MarketplaceWebServiceOrders_Client implements MarketplaceWebServiceOrders_
         // Hack :(
         // This line breaks the code and it doesn't matter
         $response = preg_replace('/<GiftMessageText>.*<\\/GiftMessageText>/s', '', $response);
+        // so does this one
+        $response = preg_replace('/<ConditionNote>.*<\\/ConditionNote>/s', '', $response); 
 
         curl_close($ch);
         return $this->_extractHeadersAndBody($response);
